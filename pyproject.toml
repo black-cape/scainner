@@ -1,0 +1,13 @@
+[project]
+name = "scainner"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cloudscraper>=1.2.71",
+    "faster-whisper>=1.0.3",
+    "ffmpeg-python>=0.2.0",
+    "numpy>=2.1.2",
+    "ruff>=0.6.9",
+]
