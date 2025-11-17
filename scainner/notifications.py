@@ -43,6 +43,6 @@ class SlackNotificationsClient:
         if not self.regex_patterns:
             return self.send_notification(transcription)
         for pattern in self.regex_patterns:
-            if re.search(pattern, transcription):
+            if re.search(pattern, transcription, re.IGNORECASE):
                 return self.send_notification(transcription)
         return False
