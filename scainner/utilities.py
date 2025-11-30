@@ -6,8 +6,8 @@ import numpy as np
 
 def load_audio(file_bytes: bytes, sr: int = 16_000) -> np.ndarray:
     """
-    Use file's bytes and transform to mono waveform, resampling as necessary.
-    Copied from https://github.com/openai/whisper/blob/main/whisper/audio.py#L25
+    https://github.com/openai/whisper/blob/main/whisper/audio.py#L25
+    Use file's bytes and transform to mono waveform, resampling as necessary
 
     Parameters
 
@@ -38,7 +38,7 @@ def load_audio(file_bytes: bytes, sr: int = 16_000) -> np.ndarray:
     return np.frombuffer(out, np.int16).flatten().astype(np.float32) / 32768.0
 
 
-def extract_time(time_string: str) -> datetime:
+def date_string_to_datetime(time_string: str) -> datetime:
     return datetime.strptime(time_string, "%Y-%m-%dT%H:%M:%S.%fZ").replace(
         tzinfo=timezone.utc
     )

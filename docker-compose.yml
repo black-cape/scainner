@@ -1,0 +1,28 @@
+services:
+  scainner:
+    build:
+      context: .
+      args:
+        WHISPER_MODEL_SIZE: ${WHISPER_MODEL_SIZE:-distil-small.en}
+    environment:
+      PYTHONUNBUFFERED: 1
+      ENDPOINT: ${ENDPOINT}
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
+      FETCH_INTERVAL: ${FETCH_INTERVAL}
+      WHISPER_MODEL_SIZE: ${WHISPER_MODEL_SIZE:-distil-small.en}
+      WHISPER_COMPUTE_TYPE: ${WHISPER_COMPUTE_TYPE:-default}
+      MONGO_DB_HOSTNAME: ${MONGO_DB_HOSTNAME}
+      MONGO_DB_PORT: ${MONGO_DB_PORT}
+      MONGO_DB_NAME: ${MONGO_DB_NAME}
+      NOTIFICATION_PATTERNS: ${NOTIFICATION_PATTERNS}
+    restart: on-failure
+  mongodb:
+    image: mongo:8
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
+
+volumes:
+  mongodbdata:
